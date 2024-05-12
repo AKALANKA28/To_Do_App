@@ -3,27 +3,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edittext"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter New Task"
-        android:paddingStart="7dp"
-        android:paddingTop="15dp"
-        android:paddingEnd="7dp"
-        android:paddingBottom="7dp" />
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_below="@id/edittext"
-        android:text="Save"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/button_save"
-        android:textColor="@color/colorWhite"
-        android:textSize="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"/>
+        <!-- Shadowed LinearLayout -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="8dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/detailradius"
+                android:orientation="vertical">
+                <!-- Add your content inside this LinearLayout if needed -->
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter New Task"
+                android:paddingStart="7dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="7dp"
+                android:fontFamily="casual"
+                android:paddingBottom="7dp" />
+
+            <EditText
+                android:id="@+id/description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:hint="Description"
+                android:paddingStart="7dp"
+                android:paddingTop="25dp"
+                android:fontFamily="casual"
+
+                android:paddingEnd="7dp" />
+
+            <!-- Horizontal LinearLayout for checkboxes -->
+
+            <EditText
+                android:id="@+id/time_text"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="0dp"
+                android:hint="Time"
+                android:paddingStart="7dp"
+                android:paddingTop="130dp"
+                android:fontFamily="casual"
+                android:paddingEnd="7dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/description_text"
+                android:layout_marginTop="110dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton_priority_high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="7dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="7dp"
+                    android:fontFamily="casual"
+                    android:text="High Priority" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_priority_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="7dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="7dp"
+                    android:fontFamily="casual"
+                    android:text="Medium Priority" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_priority_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="7dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="7dp"
+                    android:fontFamily="casual"
+                    android:text="Low Priority" />
+
+
+            </LinearLayout>
+
+            <!-- End of Horizontal LinearLayout for checkboxes -->
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioButton_priority_low"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/rounded_background"
+            android:text="Save"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
