@@ -3,6 +3,7 @@ package com.example.todo
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,9 +49,19 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
     }
 
     override fun onDialogClose(dialogInterface: DialogInterface?) {
+        // Refresh the list of tasks from the database
+        val updatedList = myDB.getAllTasks().toMutableList()
+        updatedList.reverse()
+
+        // Clear the existing list and add the updated list
         mList.clear()
-        mList.addAll(myDB.getAllTasks().reversed())
+        mList.addAll(updatedList)
+
+        // Set the updated list to the adapter and notify the change
         adapter.setTasks(mList)
         adapter.notifyDataSetChanged()
     }
+
+
+
 }

@@ -55,52 +55,50 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="0dp"
-                android:hint="Time"
                 android:paddingStart="7dp"
                 android:paddingTop="130dp"
+                android:paddingEnd="7dp"
                 android:fontFamily="casual"
-                android:paddingEnd="7dp" />
+                android:hint="Time"
+                android:ems="10"
+                android:inputType="time" />
 
 
-            <LinearLayout
+
+            <!-- Add an ID to the radio group -->
+            <RadioGroup
+                android:id="@+id/radioGroupPriority"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/description_text"
-                android:layout_marginTop="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton_priority_high"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="7dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="7dp"
                     android:fontFamily="casual"
-                    android:text="High Priority" />
+                    android:text="High Priority"
+                    />
 
                 <RadioButton
                     android:id="@+id/radioButton_priority_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="7dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="7dp"
                     android:fontFamily="casual"
-                    android:text="Medium Priority" />
+                    android:text="Medium Priority"
+
+                    />
 
                 <RadioButton
                     android:id="@+id/radioButton_priority_low"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="7dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="7dp"
                     android:fontFamily="casual"
                     android:text="Low Priority" />
 
+            </RadioGroup>
 
-            </LinearLayout>
 
             <!-- End of Horizontal LinearLayout for checkboxes -->
         </FrameLayout>

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import androidx.fragment.app.FragmentManager
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.AddNewTask
 import com.example.todo.MainActivity
@@ -21,6 +21,8 @@ class ToDoAdapter(private val myDB: DataBaseHelper, private val activity: MainAc
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var mCheckBox: CheckBox = itemView.findViewById(R.id.mcheckbox)
+        var mDescriptionTextView: TextView = itemView.findViewById(R.id.descriptionView)
+        var mTimeTextView: TextView = itemView.findViewById(R.id.timeView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -30,9 +32,11 @@ class ToDoAdapter(private val myDB: DataBaseHelper, private val activity: MainAc
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = mList[position]
-        holder.mCheckBox.text = item.task
+        holder.mCheckBox.text = item.task // Set task text
         holder.mCheckBox.isChecked = toBoolean(item.status)
-        holder.mCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.mDescriptionTextView.text = item.description // Update description text
+        holder.mTimeTextView.text = item.time // Update time text
+        holder.mCheckBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 myDB.updateStatus(item.id, 1)
             } else {
@@ -40,6 +44,7 @@ class ToDoAdapter(private val myDB: DataBaseHelper, private val activity: MainAc
             }
         }
     }
+
 
     private fun toBoolean(num: Int): Boolean {
         return num != 0
@@ -67,6 +72,7 @@ class ToDoAdapter(private val myDB: DataBaseHelper, private val activity: MainAc
             putInt("id", item.id)
             putString("task", item.task)
             putString("description", item.description)
+            putString("time", item.time)
 
         }
         val task = AddNewTask()

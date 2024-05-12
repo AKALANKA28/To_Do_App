@@ -26,6 +26,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/descriptionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/mcheckbox"
@@ -39,6 +40,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/timeView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/mcheckbox"
