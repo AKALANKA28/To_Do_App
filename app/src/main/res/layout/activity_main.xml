@@ -4,26 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBlack"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:background="@android:color/white">
+
+        <!-- Shadowed LinearLayout -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/detailradius"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <!-- ConstraintLayout with NestedScrollView and RecyclerView -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorWhite"
+                    android:fillViewport="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="true" />
+
+                </androidx.core.widget.NestedScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- FloatingActionButton remains unchanged -->
 
     <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/To_Do_Tasks"
-        android:textColor="#000"
-        android:textSize="32sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="67dp"
+        android:text="Today"
+        android:textColor="#ffffff"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textview"
-        android:layout_marginTop="183dp"
-        android:nestedScrollingEnabled="true" />
+        android:layout_alignBottom="@+id/textview"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="-20dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="12 May 2024, Sunday"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -31,13 +93,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#000000"
         android:contentDescription="@string/add_task_description"
         android:src="@drawable/baseline_add_24"
         android:tint="@color/colorWhite"
         app:backgroundTintMode="src_atop"
         app:rippleColor="#701616" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="22dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/baseline_calendar_month_24"
+        android:text="." />
 
 </RelativeLayout>

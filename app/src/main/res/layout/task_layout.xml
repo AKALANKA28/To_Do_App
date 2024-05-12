@@ -13,16 +13,44 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
+
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/mcheckbox"
-            android:layout_width="365dp"
-            android:layout_height="50dp"
+            android:layout_width="370dp"
+            android:layout_height="70dp"
             android:buttonTint="@color/colorPrimaryDark"
             android:fontFamily="casual"
-
             android:paddingStart="8dp"
-            android:text="This is Task 1"
-            android:textSize="20sp" />
+            android:text="This is Task 1 "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/mcheckbox"
+            android:layout_alignBottom="@+id/mcheckbox"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="200dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="Description goes here"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/mcheckbox"
+            android:layout_alignEnd="@+id/mcheckbox"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="casual"
+            android:paddingStart="8dp"
+            android:text="12.00 p.m."
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
     </RelativeLayout>
 
 
