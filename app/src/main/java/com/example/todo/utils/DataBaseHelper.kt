@@ -1,3 +1,4 @@
+// DataBaseHelper.kt
 package com.example.todo.utils
 
 import android.annotation.SuppressLint
@@ -9,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.example.todo.model.ToDoModel
 
 class DataBaseHelper(context: Context) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
+    SQLiteOpenHelper(context, DATABASE_NAME, null, 1), ToDoDao {
 
     companion object {
         private const val DATABASE_NAME = "TODO_DATABASE"
@@ -30,7 +31,7 @@ class DataBaseHelper(context: Context) :
         onCreate(db)
     }
 
-    fun insertTask(model: ToDoModel) {
+    override fun insertTask(model: ToDoModel) {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COL_2, model.task)
@@ -38,27 +39,27 @@ class DataBaseHelper(context: Context) :
         db.insert(TABLE_NAME, null, values)
     }
 
-    fun updateTask(id: Int, task: String) {
+    override fun updateTask(id: Int, task: String) {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COL_2, task)
         db.update(TABLE_NAME, values, "ID=?", arrayOf(id.toString()))
     }
 
-    fun updateStatus(id: Int, status: Int) {
+    override fun updateStatus(id: Int, status: Int) {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COL_3, status)
         db.update(TABLE_NAME, values, "ID=?", arrayOf(id.toString()))
     }
 
-    fun deleteTask(id: Int) {
+    override fun deleteTask(id: Int) {
         val db = this.writableDatabase
         db.delete(TABLE_NAME, "ID=?", arrayOf(id.toString()))
     }
 
     @SuppressLint("Range")
-    fun getAllTasks(): List<ToDoModel> {
+    override fun getAllTasks(): List<ToDoModel> {
         val db = this.writableDatabase
         val modelList = ArrayList<ToDoModel>()
         var cursor: Cursor? = null
