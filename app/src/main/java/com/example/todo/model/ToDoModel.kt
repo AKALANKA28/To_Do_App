@@ -5,6 +5,7 @@ class ToDoModel(
     var description: String = "",
     var time: String = "",
     var id: Int = 0,
-    var status: Int = 0
+    var status: Int = 0,
+    var priority: String = "",
 
 )

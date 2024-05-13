@@ -5,7 +5,7 @@ import com.example.todo.model.ToDoModel
 
 interface ToDoDao {
     fun insertTask(model: ToDoModel)
-    fun updateTask(id: Int, task: String, description: String, time: String)
+    fun updateTask(id: Int, task: String, description: String, time: String, priority: String)
     fun updateStatus(id: Int, status: Int)
     fun deleteTask(id: Int)
     fun getAllTasks(): List<ToDoModel>

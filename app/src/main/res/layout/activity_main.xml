@@ -75,6 +75,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/dateTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textview"
@@ -102,15 +103,33 @@
         app:backgroundTintMode="src_atop"
         app:rippleColor="#701616" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="22dp"
-        android:layout_height="24dp"
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="22dp"
-        android:background="@drawable/baseline_calendar_month_24"
-        android:text="." />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="19dp"
+        android:background="@drawable/mainsearchbar"
+        android:drawableStart="@drawable/baseline_search_24"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="search your tasks"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColorHint="@color/colorBlack" />
+
+    <!--    <Button-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_width="22dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="75dp"-->
+<!--        android:layout_marginEnd="22dp"-->
+<!--        android:background="@drawable/baseline_calendar_month_24"-->
+<!--        android:text="." />-->
 
 </RelativeLayout>

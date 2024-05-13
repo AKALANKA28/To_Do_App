@@ -1,9 +1,12 @@
 package com.example.todo
 
-
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +15,9 @@ import com.example.todo.adapter.ToDoAdapter
 import com.example.todo.model.ToDoModel
 import com.example.todo.utils.DataBaseHelper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(), OnDialogCloseListener {
 
@@ -20,6 +26,7 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
     private lateinit var myDB: DataBaseHelper
     private var mList: MutableList<ToDoModel> = mutableListOf()
     private lateinit var adapter: ToDoAdapter
+    private lateinit var searchEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +34,7 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
 
         mRecyclerview = findViewById(R.id.recyclerview)
         fab = findViewById(R.id.fab)
+        searchEditText = findViewById(R.id.editTextText2)
         myDB = DataBaseHelper(this)
         adapter = ToDoAdapter(myDB, this)
 
@@ -46,6 +54,36 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
 
         val itemTouchHelper = ItemTouchHelper(RecyclerViewTouchHelper(adapter))
         itemTouchHelper.attachToRecyclerView(mRecyclerview)
+
+
+        searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString()
+                filterTasks(query)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        updateDate()
+
+        // Call the function to set up the RadioGroup listener
+//        setupRadioGroupListener()
+    }
+    private fun filterTasks(query: String) {
+        val filteredList = mList.filter { task ->
+            task.task.toLowerCase(Locale.getDefault()).contains(query.toLowerCase(Locale.getDefault()))
+        }
+        adapter.setTasks(filteredList)
+    }
+
+    private fun updateDate() {
+        val dateTextView: TextView = findViewById(R.id.dateTextView)
+        val currentDate = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd MMM yyyy, EEEE", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        dateTextView.text = formattedDate
     }
 
     override fun onDialogClose(dialogInterface: DialogInterface?) {
@@ -62,6 +100,24 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
         adapter.notifyDataSetChanged()
     }
 
+
+
+//    private fun filterTasksByPriority() {
+//        val sortedList = mList.sortedByDescending { it.priority }
+//        adapter.setTasks(sortedList)
+//    }
+
+//    private fun setupRadioGroupListener() {
+//        val radioGroupPriority = findViewById<RadioGroup>(R.id.radioGroupPriority)
+//
+//        radioGroupPriority.setOnCheckedChangeListener { _, checkedId ->
+//            when (checkedId) {
+//                R.id.radioButton_priority_high,
+//                R.id.radioButton_priority_medium,
+//                R.id.radioButton_priority_low -> filterTasksByPriority()
+//            }
+//        }
+//    }
 
 
 }
