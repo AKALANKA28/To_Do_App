@@ -14,12 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
+            android:background="@drawable/detailradius"
             android:padding="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:background="@drawable/detailradius"
+                android:background="@color/colorWhite"
                 android:orientation="vertical">
                 <!-- Add your content inside this LinearLayout if needed -->
             </LinearLayout>

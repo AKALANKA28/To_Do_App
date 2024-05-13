@@ -2,6 +2,8 @@ package com.example.todo
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
@@ -69,12 +71,15 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
 
         updateDate()
 
+
         // Call the function to set up the RadioGroup listener
 //        setupRadioGroupListener()
     }
+
     private fun filterTasks(query: String) {
         val filteredList = mList.filter { task ->
-            task.task.toLowerCase(Locale.getDefault()).contains(query.toLowerCase(Locale.getDefault()))
+            task.task.toLowerCase(Locale.getDefault())
+                .contains(query.toLowerCase(Locale.getDefault()))
         }
         adapter.setTasks(filteredList)
     }
@@ -100,7 +105,6 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
         adapter.setTasks(mList)
         adapter.notifyDataSetChanged()
     }
-
 
 
 //    private fun filterTasksByPriority() {

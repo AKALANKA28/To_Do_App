@@ -53,6 +53,17 @@
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/mcheckbox"
+            android:layout_alignBottom="@+id/timeView"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="-16dp"
+            android:text="TextView"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
 

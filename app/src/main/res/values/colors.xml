@@ -5,5 +5,9 @@
     <color name="colorAccent">#192A56</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="high_priority">#FF0000</color> <!-- Red color for high priority -->
+    <color name="medium_priority">#FFFF00</color> <!-- Yellow color for medium priority -->
+    <color name="low_priority">#00FF00</color> <!-- Green color for low priority -->
+
 
 </resources>
