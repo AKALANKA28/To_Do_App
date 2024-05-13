@@ -5,7 +5,7 @@ import android.widget.Button
 import android.widget.CalendarView
 import androidx.appcompat.app.AppCompatActivity
 
-class CalendarActivity : AppCompatActivity() {
+class Calendar : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

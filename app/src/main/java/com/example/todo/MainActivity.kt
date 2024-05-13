@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.adapter.ToDoAdapter
 import com.example.todo.model.ToDoModel
-import com.example.todo.utils.DataBaseHelper
+import com.example.todo.utils.DatabaseHelper
+import com.example.todo.utils.ToDoDao
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
 
     private lateinit var mRecyclerview: RecyclerView
     private lateinit var fab: FloatingActionButton
-    private lateinit var myDB: DataBaseHelper
+    private lateinit var myDao: ToDoDao
     private var mList: MutableList<ToDoModel> = mutableListOf()
     private lateinit var adapter: ToDoAdapter
     private lateinit var searchEditText: EditText
@@ -35,8 +36,8 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
         mRecyclerview = findViewById(R.id.recyclerview)
         fab = findViewById(R.id.fab)
         searchEditText = findViewById(R.id.editTextText2)
-        myDB = DataBaseHelper(this)
-        adapter = ToDoAdapter(myDB, this)
+        myDao = ToDoDao(this)
+        adapter = ToDoAdapter(myDao, this)
 
         mRecyclerview.apply {
             setHasFixedSize(true)
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
             adapter = this@MainActivity.adapter
         }
 
-        mList = myDB.getAllTasks().toMutableList()
+        mList = myDao.getAllTasks().toMutableList()
         mList.reverse()
         adapter.setTasks(mList)
 
@@ -88,7 +89,7 @@ class MainActivity : AppCompatActivity(), OnDialogCloseListener {
 
     override fun onDialogClose(dialogInterface: DialogInterface?) {
         // Refresh the list of tasks from the database
-        val updatedList = myDB.getAllTasks().toMutableList()
+        val updatedList = myDao.getAllTasks().toMutableList()
         updatedList.reverse()
 
         // Clear the existing list and add the updated list

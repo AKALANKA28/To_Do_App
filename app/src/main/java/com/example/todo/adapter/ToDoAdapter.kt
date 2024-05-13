@@ -12,9 +12,10 @@ import com.example.todo.AddNewTask
 import com.example.todo.MainActivity
 import com.example.todo.model.ToDoModel
 import com.example.todo.R
-import com.example.todo.utils.DataBaseHelper
+import com.example.todo.utils.DatabaseHelper
+import com.example.todo.utils.ToDoDao
 
-class ToDoAdapter(private val myDB: DataBaseHelper, private val activity: MainActivity) :
+class ToDoAdapter(private val myDao: ToDoDao, private val activity: MainActivity) :
     RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
 
     private var mList: List<ToDoModel> = listOf()
@@ -38,9 +39,9 @@ class ToDoAdapter(private val myDB: DataBaseHelper, private val activity: MainAc
         holder.mTimeTextView.text = item.time // Update time text
         holder.mCheckBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                myDB.updateStatus(item.id, 1)
+                myDao.updateStatus(item.id, 1)
             } else {
-                myDB.updateStatus(item.id, 0)
+                myDao.updateStatus(item.id, 0)
             }
         }
     }
@@ -61,7 +62,7 @@ class ToDoAdapter(private val myDB: DataBaseHelper, private val activity: MainAc
 
     fun deleteTask(position: Int) {
         val item = mList[position]
-        myDB.deleteTask(item.id)
+        myDao.deleteTask(item.id)
         this.mList = mList.filterIndexed { index, _ -> index != position }
         notifyItemRemoved(position)
     }

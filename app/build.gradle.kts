@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt") // Apply the Kotlin KAPT plugin
+
 }
 
 android {
@@ -49,4 +51,11 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("it.xabaras.android:recyclerview-swipedecorator:1.4")
+
+    // Room components
+    implementation ("androidx.room:room-runtime:2.4.0")
+    kapt ("androidx.room:room-compiler:2.4.0")
+
+    // Kotlin Extensions for Room
+    implementation ("androidx.room:room-ktx:2.4.0")
 }
